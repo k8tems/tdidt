@@ -412,25 +412,29 @@ def classify(example,node_list):
     return current_node.outcome
 
 
+def build(fname):
+    # create Example Set from given file
+    e = ExampleSet()
+    e.initialize_from_file(fname)
+
+    # get a third of the examples for testing
+    test_set = e.get_test_instances(int((1.0 / 3) * len(e.examples)))
+
+    # run TDIDT
+    node_list = [TDIDTNode(e)]
+    attribute_list = list(e.attributes.keys())
+    TDIDT(node_list, attribute_list, 0)
+    return node_list, test_set
+
+
 if len(sys.argv) != 2:
     print("Usage {} FILENAME".format(sys.argv[0]))
     sys.exit(1)
 
-# create Example Set from given file
-e = ExampleSet()
-e.initialize_from_file(sys.argv[1])
-
-# get a third of the examples for testing
-test_set = e.get_test_instances(int((1.0/3)*len(e.examples)))
-
-# run TDIDT
-node_list = [TDIDTNode(e)]
-attribute_list = list(e.attributes.keys())
-TDIDT(node_list,attribute_list,0)
+node_list, test_set = build(sys.argv[1])
 
 # print all nodes created by TDIDT
-for node in node_list:
-    print(node)
+print(' '.join([str(n) for n in node_list]))
 
 # classify the test examples and cound how many were corretly classified
 correct_classified = 0
