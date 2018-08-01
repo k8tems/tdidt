@@ -87,7 +87,7 @@ def entropy(p, n):
     return p * math.log(1.0 / p, 2) + n * math.log(1.0 / n, 2)
 
 
-class ExampleSet:
+class DataSet:
     """
     Containes a set of examples this includes the variables
 
@@ -265,7 +265,7 @@ class ExampleSet:
         # The accuracy is at 64% without it
         # => Probably better to include it to avoid some sort of sampling bias?
         random.seed(1)
-        test_examples = ExampleSet()
+        test_examples = DataSet()
         for i in range(quantity):
             rand = random.randint(0, len(self.examples) - 1)
             test_examples.examples.append(self.examples.pop(rand))
@@ -277,8 +277,8 @@ class ExampleSet:
         Split the example_set in examples which fullfill the test and those which do not fullfill the test.
         Two example sets are returned. The first one containes the examples which fullfill the test.
         """
-        succeeding_example_set = ExampleSet()
-        failing_example_set = ExampleSet()
+        succeeding_example_set = DataSet()
+        failing_example_set = DataSet()
 
         for example in self.examples:
             if test(example):
@@ -439,7 +439,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     # create Example Set from given file
-    train_set = ExampleSet()
+    train_set = DataSet()
     train_set.initialize_from_file(sys.argv[1])
     # Get a third of the examples for testing
     test_set = train_set.get_test_instances(int((1.0 / 3) * len(train_set.examples)))

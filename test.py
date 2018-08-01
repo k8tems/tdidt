@@ -1,5 +1,5 @@
 import unittest
-from tdidt import build, ExampleSet
+from tdidt import build, DataSet
 
 
 class MyTestCase(unittest.TestCase):
@@ -7,7 +7,7 @@ class MyTestCase(unittest.TestCase):
         with open('expected.txt') as f:
             expected = f.read()
 
-        train_set = ExampleSet()
+        train_set = DataSet()
         train_set.initialize_from_file('data_exercise_1.csv')
         # Remove test set from data set
         test_set = train_set.get_test_instances(int((1.0 / 3) * len(train_set.examples)))
