@@ -430,10 +430,10 @@ def build(fname):
     e = ExampleSet()
     e.initialize_from_file(fname)
 
-    # get a third of the examples for testing
+    # Get a third of the examples for testing
     test_set = e.get_test_instances(int((1.0 / 3) * len(e.examples)))
 
-    # run TDIDT
+    # The rest of the data(training set) is used to construct the tree
     node_list = [TDIDTNode(e)]
     attribute_list = list(e.attributes.keys())
     TDIDT(node_list, attribute_list, 0)
