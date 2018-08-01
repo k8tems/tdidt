@@ -254,7 +254,7 @@ class ExampleSet:
         Deletes ``quantity`` examples from the list of examples and returns an ``ExampleSet`` containing those examples.
         This is intended for supplying an ExampleSet for testing an learned decision tree
         """
-        random.seed()
+        random.seed(1)
         test_examples = ExampleSet()
         for i in range(quantity):
             rand = random.randint(0,len(self.examples)-1)
