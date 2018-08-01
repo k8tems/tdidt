@@ -7,12 +7,12 @@ class MyTestCase(unittest.TestCase):
         with open('expected.txt') as f:
             expected = f.read()
 
-        e = ExampleSet()
-        e.initialize_from_file('data_exercise_1.csv')
+        train_set = ExampleSet()
+        train_set.initialize_from_file('data_exercise_1.csv')
         # Remove test set from data set
-        test_set = e.get_test_instances(int((1.0 / 3) * len(e.examples)))
+        test_set = train_set.get_test_instances(int((1.0 / 3) * len(train_set.examples)))
 
-        node_list = build(e)
+        node_list = build(train_set)
         self.assertEqual(expected, ' '.join([str(n) for n in node_list]))
 
 

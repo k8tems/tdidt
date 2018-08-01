@@ -439,13 +439,13 @@ if __name__ == '__main__':
         sys.exit(1)
 
     # create Example Set from given file
-    e = ExampleSet()
-    e.initialize_from_file(sys.argv[1])
+    train_set = ExampleSet()
+    train_set.initialize_from_file(sys.argv[1])
     # Get a third of the examples for testing
-    test_set = e.get_test_instances(int((1.0 / 3) * len(e.examples)))
+    test_set = train_set.get_test_instances(int((1.0 / 3) * len(train_set.examples)))
 
     # The rest of the data(training set) is used to construct the tree
-    node_list = build(e)
+    node_list = build(train_set)
 
     # print all nodes created by TDIDT
     print(' '.join([str(n) for n in node_list]))
