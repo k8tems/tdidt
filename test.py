@@ -1,5 +1,5 @@
 import unittest
-from tdidt import build, DataSet
+from tdidt import build, get_dataset
 
 
 class MyTestCase(unittest.TestCase):
@@ -7,10 +7,7 @@ class MyTestCase(unittest.TestCase):
         with open('expected.txt') as f:
             expected = f.read()
 
-        train_set = DataSet()
-        train_set.initialize_from_file('data_exercise_1.csv')
-        # Remove test set from data set
-        test_set = train_set.get_test_instances(int((1.0 / 3) * len(train_set.examples)))
+        train_set, test_set = get_dataset('data_exercise_1.csv')
 
         node_list = build(train_set)
         self.assertEqual(expected, ' '.join([str(n) for n in node_list]))

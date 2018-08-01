@@ -426,6 +426,15 @@ def classify(example, node_list):
     return current_node.outcome
 
 
+def get_dataset(fname):
+    # create Example Set from given file
+    train_set = DataSet()
+    train_set.initialize_from_file(fname)
+    # Get a third of the examples for testing
+    test_set = train_set.get_test_instances(int((1.0 / 3) * len(train_set.examples)))
+    return train_set, test_set
+
+
 def build(e):
     node_list = [TDIDTNode(e)]
     attribute_list = list(e.attributes.keys())
@@ -439,10 +448,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     # create Example Set from given file
-    train_set = DataSet()
-    train_set.initialize_from_file(sys.argv[1])
-    # Get a third of the examples for testing
-    test_set = train_set.get_test_instances(int((1.0 / 3) * len(train_set.examples)))
+    train_set, test_set = get_dataset(sys.argv[1])
 
     # The rest of the data(training set) is used to construct the tree
     node_list = build(train_set)
