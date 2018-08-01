@@ -416,6 +416,8 @@ def TDIDT(node_list, attribute_list, current_node_idx):
 def classify(example, node_list):
     """
     traverses with the given example the decision tree and returns the outcome
+    for each node, either go left or right depending on
+    whether the input meets the criteria oro not
     """
     current_node = node_list[0]
     while not current_node.is_leaf:
