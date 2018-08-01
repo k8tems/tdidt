@@ -263,6 +263,7 @@ class ExampleSet:
         """
         # Is the randomness required?
         # The accuracy is at 64% without it
+        # => Probably better to include it to avoid some sort of sampling bias?
         random.seed(1)
         test_examples = ExampleSet()
         for i in range(quantity):
