@@ -365,8 +365,8 @@ def TDIDT(node_list, attribute_list, current_node_idx):
         current_node.outcome = (parent_node.example_set.positives >= parent_node.example_set.negatives)
         return
 
-    print("Lengt: {}, Sum of pos and neg: {}".format(len(current_node.example_set.examples),
-                                                     current_node.example_set.positives + current_node.example_set.negatives))
+    print("Length: {}, Sum of pos and neg: {}".format(len(current_node.example_set.examples),
+                                                      current_node.example_set.positives + current_node.example_set.negatives))
 
     # now there is certenly something left to be classified
     # calculate the information gain of every attribute
