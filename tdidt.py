@@ -427,23 +427,24 @@ def build(fname):
     return node_list, test_set
 
 
-if len(sys.argv) != 2:
-    print("Usage {} FILENAME".format(sys.argv[0]))
-    sys.exit(1)
+if __name__  == '__main__':
+    if len(sys.argv) != 2:
+        print("Usage {} FILENAME".format(sys.argv[0]))
+        sys.exit(1)
 
-node_list, test_set = build(sys.argv[1])
+    node_list, test_set = build(sys.argv[1])
 
-# print all nodes created by TDIDT
-print(' '.join([str(n) for n in node_list]))
+    # print all nodes created by TDIDT
+    print(' '.join([str(n) for n in node_list]))
 
-# classify the test examples and cound how many were corretly classified
-correct_classified = 0
-wrong_classified = 0
-for example in test_set.examples:
-    if classify(example,node_list) == example.outcome:
-        correct_classified += 1
-    else:
-        wrong_classified += 1
+    # classify the test examples and cound how many were corretly classified
+    correct_classified = 0
+    wrong_classified = 0
+    for example in test_set.examples:
+        if classify(example,node_list) == example.outcome:
+            correct_classified += 1
+        else:
+            wrong_classified += 1
 
-# print the success rate
-print("Success rate: {:.2%}".format(correct_classified/float(len(test_set.examples))))
+    # print the success rate
+    print("Success rate: {:.2%}".format(correct_classified/float(len(test_set.examples))))
