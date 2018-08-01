@@ -430,7 +430,7 @@ def build(e):
     node_list = [TDIDTNode(e)]
     attribute_list = list(e.attributes.keys())
     TDIDT(node_list, attribute_list, 0)
-    return node_list, test_set
+    return node_list
 
 
 if __name__ == '__main__':
