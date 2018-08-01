@@ -5,6 +5,7 @@ import random
 import math
 import copy
 
+
 class SplittingTest:
     """
     Test for splitting a TDIDTNode
@@ -35,6 +36,7 @@ class SplittingTest:
         """
         return self.test(value)
 
+
 class Example:
     """
     example for the training with tdidt
@@ -45,6 +47,7 @@ class Example:
 
     def __str__(self):
         return str(self.attribute_hash) + "------------" + str(self.outcome)
+
 
 def get_information_gain(ppos, pneg, npos, nneg):
     """
@@ -65,6 +68,7 @@ def get_information_gain(ppos, pneg, npos, nneg):
         information_gain -= n_total/total * entropy(npos/n_total,nneg/n_total)
     return information_gain
 
+
 def entropy(p,n):
     """
     compute the entropy of p and n
@@ -79,6 +83,7 @@ def entropy(p,n):
     elif p == 0:
         return n*math.log(1.0/n, 2)
     return p*math.log(1.0/p, 2) + n*math.log(1.0/n, 2)
+
 
 class ExampleSet:
     """
@@ -319,7 +324,8 @@ class TDIDTNode:
     def __str__(self):
         return "{} {} {} {} {}".format(self.identifier,self.parent_test_outcome,self.test,self.left_child_idx,self.right_child_idx)
 
-def TDIDT(node_list,attribute_list,current_node_idx):
+
+def TDIDT(node_list, attribute_list, current_node_idx):
     """
     TDIDT algorithm for learning a decision tree given the examples contained in the root node
 
