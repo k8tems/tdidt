@@ -254,6 +254,8 @@ class ExampleSet:
         Deletes ``quantity`` examples from the list of examples and returns an ``ExampleSet`` containing those examples.
         This is intended for supplying an ExampleSet for testing an learned decision tree
         """
+        # Is the randomness required?
+        # The accuracy is at 64% without it
         random.seed(1)
         test_examples = ExampleSet()
         for i in range(quantity):
