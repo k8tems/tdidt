@@ -97,7 +97,7 @@ class DataSet:
         * positives: the total number of examples with negative outcome
     """
 
-    def __init__(self, examples=[]):
+    def __init__(self):
         self.examples = []
         self.positives = 0
         self.negatives = 0
