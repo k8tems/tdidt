@@ -144,8 +144,12 @@ class DataSet:
         max_information_gain = None
         splitting_test = None
         split_value = None
-        # Why are these tuples?
+        # [positive examples that with outcome "yes",
+        #  positive examples that with outcome "no"]
         passing_examples = [0, 0]
+        # [negative examples that with outcome "yes",
+        #  negative examples that with outcome "no"]
+        # What makes an example positive or negative?
         failing_examples = [self.positives, self.negatives]
 
         # sort the examples according to the values of the attribute
