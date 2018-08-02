@@ -150,6 +150,7 @@ class DataSet:
         # sort the examples according to the values of the attribute
         self.examples.sort(key=lambda e: e.attribute_hash[attribute])
         for i_idx in range(len(self.examples) - 1):
+            # Count `examples` with positive labels?
             if self.examples[i_idx].outcome:
                 failing_examples[0] -= 1
                 passing_examples[0] += 1
