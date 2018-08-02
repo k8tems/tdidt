@@ -119,17 +119,17 @@ class DataSet:
         self.positives = 0
         self.negatives = 0
         for line in input_file:
-            example_list = list(map(lambda s: s.rstrip(), line.split(',')))
+            example_row = list(map(lambda s: s.rstrip(), line.split(',')))
             # FIXME IOOUUUUU there has to be a way which is prettier than this
-            example_hash = dict(zip(sorted(self.attributes), example_list))
+            example_hash = dict(zip(sorted(self.attributes), example_row))
             for key in example_hash.keys():
                 if self.attributes[key] == 'n':  # convert all numerical values from str to float
                     example_hash[key] = float(example_hash[key])
                 elif self.attributes[key] == 'b':  # and all boolean values from str to boolean
                     example_hash[key] = (example_hash[key] == "yes")
 
-            self.examples.append(Example(example_hash, example_list[-1] == "yes"))
-            if example_list[-1] == "yes":
+            self.examples.append(Example(example_hash, example_row[-1] == "yes"))
+            if example_row[-1] == "yes":
                 self.positives += 1
             else:
                 self.negatives += 1
