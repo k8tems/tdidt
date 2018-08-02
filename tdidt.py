@@ -144,6 +144,7 @@ class DataSet:
         max_information_gain = None
         splitting_test = None
         split_value = None
+        # Why are these tuples?
         passing_examples = [0, 0]
         failing_examples = [self.positives, self.negatives]
 
