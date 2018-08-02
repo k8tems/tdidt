@@ -244,7 +244,10 @@ class DataSet:
         """
         Computes the best splitting test for the given attribute. This method is a wrapper for the 
         methods ``best_split_numerical`` , ``best_split_categorical`` and ``split_boolean``
+
         In either case is the running time linear with respect to the number of examples
+        Each attribute has an associated type `n`, `c` or `b` which stand for
+        `numerical`, `catigorical` and `boolean` respectively
         """
         max_information_gain = None
         splitting_test = None
